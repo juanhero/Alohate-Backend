@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "bf367c80-b32a-4479-b08e-62c263bd3e02",
+		"name": "G1M2_E1_sprint2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetApp",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://alohate-app.herokuapp.com/room/type/301",
+					"protocol": "https",
+					"host": [
+						"alohate-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"room",
+						"type",
+						"301"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetApp",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://alohate-app.herokuapp.com/room/type/301",
+							"protocol": "https",
+							"host": [
+								"alohate-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"room",
+								"type",
+								"301"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Dec 2020 02:23:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"roomName\": \"301\",\n    \"roomType\": \"pent - house\",\n    \"value\": 34000\n}"
+				}
+			]
+		},
+		{
+			"name": "PostApp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roomName\":\"401\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://alohate-app.herokuapp.com/room/auth",
+					"protocol": "https",
+					"host": [
+						"alohate-app",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"room",
+						"auth"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PostApp",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomName\":\"401\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://alohate-app.herokuapp.com/room/auth",
+							"protocol": "https",
+							"host": [
+								"alohate-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"room",
+								"auth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Dec 2020 02:31:09 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "Content-Length",
+							"value": "15"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Existe\": true\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
