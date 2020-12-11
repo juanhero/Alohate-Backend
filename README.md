@@ -1,2 +1,1 @@
-# Alohate-Backend
-Proyecto UNAL #MINTIC2022 Alohate
+# Unal_ciclo_III_proyect
