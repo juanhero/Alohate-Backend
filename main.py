@@ -8,9 +8,22 @@ from fastapi import FastAPI, HTTPException
 
 api = FastAPI()
 
+####################################################
+from fastapi.middleware.cors import CORSMiddleware
+origins = [     #Origenes desde donde se permitira entrar a la app
+    "http://localhost.tiangolo.com", 
+    "https://localhost.tiangolo.com",
+    "http://localhost", 
+    "http://localhost:8080",
+]
+api.add_middleware(
+    CORSMiddleware, allow_origins=origins,  #Agregar esos origenes al CORS
+    allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+)
+#####################################################
 
 @api.get("/room/type/{roomName}")#Recibe la habitacion en la url
-async def get_roomType(roomName: str):
+async def type_room(roomName: str):
     room_in_db = get_room(roomName)#Verifica si la habitacion existe
     if room_in_db == None:
         raise HTTPException(status_code=404, detail="La habitación no existe")
