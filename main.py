@@ -1,7 +1,10 @@
 from db.roomTypes_db import roomTypesInDB
 from db.roomTypes_db import update_room, get_room
+from db.user_db import UserInDB
+from db.user_db import update_user, get_user
 
 from models.roomTypes_models import RoomIn, RoomOut
+from models.user_models import UserIn, UserOut
 
 import datetime
 from fastapi import FastAPI, HTTPException
@@ -32,9 +35,26 @@ async def type_room(roomName: str):
     room_out = RoomOut(**room_in_db.dict())#Mapea la habitacion al RoomOut
     return room_out
 
-@api.post("/room/auth/")
-async def auth_room(room_in: RoomIn):#Recibe la habitacion
-    room_in_db = get_room(room_in.roomName)#Verifica si la habitacion existe
+@api.post("/user/auth/")
+async def auth_user(user_in: UserIn):#Recibe el usuario
+    user_in_db = get_user(user_in.username)#Verifica si el usuario existe
+    if user_in_db == None:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+    if user_in.password != user_in_db.password:
+        raise HTTPException(status_code=403, detail="Contraseña incorrecta")
+    return {"Existe": True}
+
+@api.put("/room/reserve/{roomName}")
+async def make_reserve(roomName: str):
+    room_in_db = get_room(roomName)
+
     if room_in_db == None:
         raise HTTPException(status_code=404, detail="La habitación no existe")
-    return {"Existe": True}
+
+    if room_in_db.available == False:
+        raise HTTPException(status_code=403, detail="La habitación no esta disponible")
+        
+    room_in_db.available = False 
+    update_room(room_in_db) 
+
+    return True
